@@ -11,7 +11,7 @@ public class Graphs {
 
 
         public Graphs(){
-            this.vertex= new ArrayList<Vertex<String>>();;
+            this.vertex= new ArrayList<Vertex<String>>();
             this.edge= new ArrayList<Edge>();
         }
 

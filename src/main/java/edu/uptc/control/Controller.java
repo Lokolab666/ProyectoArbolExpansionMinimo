@@ -66,6 +66,7 @@ public class Controller implements ActionListener{
                 management.nextIndex();
                 actions.showGraph(Actions.GRAPHMST, management.getGraphMST());//Msotar arbol MST VERDE
                 break;
+
         }
 
     }

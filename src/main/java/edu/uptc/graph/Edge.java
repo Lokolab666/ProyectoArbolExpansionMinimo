@@ -21,7 +21,7 @@ public class Edge {
 
     //Devuelve si la arista incide o no en el vértice de entrada
     public boolean incident(Vertex<String> vertex){
-        return vertex.getInfo()==v1.getInfo() || vertex.getInfo()==v2.getInfo();
+        return vertex.getInfo() == v1.getInfo() || vertex.getInfo() == v2.getInfo();
     }
 
     public Vertex<String> getVertex1(){

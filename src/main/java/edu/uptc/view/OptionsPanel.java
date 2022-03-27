@@ -34,6 +34,7 @@ public class OptionsPanel extends JPanel{
     private JButton btnPreviousMST;
     private JButton btnNextMST;
 
+
     public OptionsPanel() {
         setLayout(null);
         initialize();
@@ -88,13 +89,15 @@ public class OptionsPanel extends JPanel{
         btnEdge.setBounds(30, 390, 240, 30);
 
         txtMST = new JLabel("Arboles de expancion minima");
-        txtMST.setBounds(30, 440, 240, 30);
+        txtMST.setBounds(30, 420, 240, 30);
 
         btnPreviousMST = new JButton("Paso anterior");
-        btnPreviousMST.setBounds(30, 470, 240, 30);
+        btnPreviousMST.setBounds(30, 470, 120, 30);
 
         btnNextMST = new JButton("Siguiente paso");
-        btnNextMST.setBounds(30, 510, 240, 30);
+        btnNextMST.setBounds(150, 470, 120, 30);
+
+
     }
 
     private void assign() {
@@ -118,6 +121,7 @@ public class OptionsPanel extends JPanel{
         add(txtMST);
         add(btnPreviousMST);
         add(btnNextMST);
+
     }
 
     public void assignController(Controller controller) {
@@ -138,6 +142,7 @@ public class OptionsPanel extends JPanel{
 
         btnNextMST.setActionCommand(Actions.NEXT);
         btnNextMST.addActionListener(controller);
+
     }
 
     public String getVertexName() {

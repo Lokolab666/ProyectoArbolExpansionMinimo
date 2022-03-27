@@ -10,6 +10,9 @@ import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.SparseMultigraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 
+/**
+ * Clase que permite el manejo de los datos del grafo pintado o a pintar
+ */
 public class Management{
 
     private Graph<Vertex<String>, Edge> graph;
@@ -19,16 +22,21 @@ public class Management{
     private int index;
     private Prim prim;
 
+    /**
+     * Contructor principal de la clase donde permite inicializar ciertos atributos necesarios
+     */
     public Management() {
         index = 0;
         prim = new Prim();
         vertexList = new ArrayList<Vertex<String>>();
         edgeList = new ArrayList<Edge>();
         graph = new SparseMultigraph<Vertex<String>,Edge>();
-        genesis();
+        problemOne();
         resetMST();
     }
-
+    /**
+     * Metodo que permite poner en un reincio el panel, vertices y aristas puestas
+     */
     public void reset() {
         vertexList = new ArrayList<Vertex<String>>();
         edgeList = new ArrayList<Edge>();
@@ -37,8 +45,8 @@ public class Management{
         resetMST();
     }
 
-    private void genesis() {
-/*
+    public void problemOne(){
+
         // Agregar nodos
         vertexList.add(new Vertex<String>("SE"));
         vertexList.add(new Vertex<String>("LA"));
@@ -62,9 +70,10 @@ public class Management{
         edgeList.add(new Edge(800, vertexList.get(4), vertexList.get(5)));
         edgeList.add(new Edge(200, vertexList.get(5), vertexList.get(6)));
 
+        genesis();
+    }
 
-
-*/
+    public void problemTwo(){
         vertexList.add(new Vertex<String>("1"));
         vertexList.add(new Vertex<String>("2"));
         vertexList.add(new Vertex<String>("3"));
@@ -96,8 +105,13 @@ public class Management{
         edgeList.add(new Edge(7, vertexList.get(6), vertexList.get(7)));
         edgeList.add(new Edge(5, vertexList.get(7), vertexList.get(8)));
 
+        genesis();
+    }
 
-
+    /**
+     * Metodo que permite colocar datos pre-inicializados
+     */
+    private void genesis() {
 
         for(int i = 0; i < vertexList.size(); i++){
             graph.addVertex(vertexList.get(i));
@@ -113,6 +127,10 @@ public class Management{
         }
     }
 
+    /**
+     * Metodo que permite crear una cara o vertice de acuerdo a un dato ingresado
+     * @param data Vector lleno de los datos para crear el valor de la arista
+     */
     public void createEdge(String[] data) {
         try {
             edgeList.add(new Edge(Integer.parseInt(data[1]), vertexList.get(Integer.parseInt(data[0])), vertexList.get(Integer.parseInt(data[2]))));
