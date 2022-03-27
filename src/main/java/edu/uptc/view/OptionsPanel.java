@@ -11,8 +11,10 @@ import javax.swing.JTextField;
 
 import edu.uptc.control.*;
 
+/**
+ * Clase donde se crea el panel de opciones o acciones para realizar en el programa
+ */
 public class OptionsPanel extends JPanel{
-
     private JButton btnClose;
     private JButton btnReset;
 
@@ -34,12 +36,18 @@ public class OptionsPanel extends JPanel{
     private JButton btnPreviousMST;
     private JButton btnNextMST;
 
+    /**
+     * Constructor principal de la clase que permite inicializar atributos y objetos del panel
+     */
     public OptionsPanel() {
         setLayout(null);
         initialize();
         assign();
     }
 
+    /**
+     * Metodo en el que se inicializan los botones, espacios de escritura y entradas de variables al grafo MST
+     */
     private void initialize() {
         btnReset = new JButton("Reset");
         btnReset.setForeground(Color.RED);
@@ -97,6 +105,9 @@ public class OptionsPanel extends JPanel{
         btnNextMST.setBounds(30, 510, 240, 30);
     }
 
+    /**
+     * Metodo que permite agregar los botones, textfields y demás inputs para crear el arbol de expansión minima
+     */
     private void assign() {
         add(btnReset);
         add(btnClose);
@@ -120,6 +131,10 @@ public class OptionsPanel extends JPanel{
         add(btnNextMST);
     }
 
+    /**
+     * Metodo que permite asignar la clase Controlador a cada boton e input, con el fin de que tengan una acción
+     * @param controller
+     */
     public void assignController(Controller controller) {
         btnReset.setActionCommand(Actions.RESET);
         btnReset.addActionListener(controller);
@@ -140,10 +155,18 @@ public class OptionsPanel extends JPanel{
         btnNextMST.addActionListener(controller);
     }
 
+    /**
+     * Metodo que permite obtener el nombre de los vertices añadidos al programa.
+     * @return nombre del vertice en texto
+     */
     public String getVertexName() {
         return tfVertexName.getText();
     }
 
+    /**
+     * Metodo que permite llenar el combo box del vertice de conexión de destino con el nombre de los vertices añadidos al programa, para hacer las debidas conexiones.
+     * @param data
+     */
     public void fillcbOriginVertex(String[] data) {
         cbOriginVertex.removeAllItems();
         for (int i = 0; i < data.length; i++) {
@@ -151,10 +174,18 @@ public class OptionsPanel extends JPanel{
         }
     }
 
+    /**
+     * Metodo que permite obtener el vertice puesto como origen en el programa.
+     * @return valor del vertice de origen
+     */
     public int getOriginVertexIndex() {
         return cbOriginVertex.getSelectedIndex();
     }
 
+    /**
+     * Metodo que permite llenar el combo box del vertice de conexión de destino con el nombre de los vertices añadidos al programa
+     * @param data
+     */
     public void fillcbDestinyVertex(String[] data) {
         cbDestinyVertex.removeAllItems();
         for (int i = 0; i < data.length; i++) {
@@ -162,14 +193,26 @@ public class OptionsPanel extends JPanel{
         }
     }
 
+    /**
+     * Metodo que permite obtener el vertice puesto como destino en el programa.
+     * @return valor del vertice de destino
+     */
     public int getDestinyVertexIndex() {
         return cbDestinyVertex.getSelectedIndex();
     }
 
+    /**
+     * Metodo que permite obtener el peso de las aristas
+     * @return peso de la arista como texto
+     */
     public String getWeight() {
         return tfWeight.getText();
     }
 
+    /**
+     * Metodo que permite limpiar los campos de texto en el panel de acciones
+     * @param section - donde esta el input de texto.
+     */
     public void clear(String section) {
         switch(section){
             case Actions.VERTEX:

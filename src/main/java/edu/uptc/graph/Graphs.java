@@ -2,6 +2,9 @@ package edu.uptc.graph;
 
 import java.util.ArrayList;
 
+/**
+ * Clase Gráfico, con ciertos algoritmos incorporados, teniendo la arista y el vertice
+ */
 public class Graphs {
 
         //Clase de gráfico con ciertos algoritmos incorporados
@@ -9,18 +12,30 @@ public class Graphs {
         private ArrayList<Edge> edge;
         private ArrayList<Vertex<String>> vertex;
 
-
-        public Graphs(){
+    /**
+     * Constructor principal de la clase donde se inicializan las aristas y vertices
+     */
+    public Graphs(){
             this.vertex= new ArrayList<Vertex<String>>();;
             this.edge= new ArrayList<Edge>();
         }
 
-        public Graphs(ArrayList<Vertex<String>> vertex, ArrayList<Edge> edge){
+    /**
+     * Constructor principal de la clase donde inicializa el array de aristas y vertices
+     * @param vertex
+     * @param edge
+     */
+    public Graphs(ArrayList<Vertex<String>> vertex, ArrayList<Edge> edge){
             this.vertex=vertex;
             this.edge=edge;
         }
 
-        //Devuelve si el gráfico contiene o no un vértice de entrada
+    /**
+     *Metodo que Devuelve si el gráfico contiene o no un vértice de entrada
+     * @param v
+     * @return booleano diciendo si esta o no el vert8ice de entrada
+     */
+    //Devuelve si el gráfico contiene o no un vértice de entrada
         public boolean hasVertex(Vertex<String> v){
             for(Vertex<String> vertex:vertex){
                 if(vertex.getInfo().equals(v.getInfo())){
@@ -30,7 +45,11 @@ public class Graphs {
             return false;
         }
 
-        //Devuelve la suma de los pesos de los bordes en el gráfico
+    /**
+     * Metodo que Devuelve la suma de los pesos de los bordes en el gráfico
+     * @return suma
+     */
+    //Devuelve la suma de los pesos de los bordes en el gráfico
         public int getCost(){
             int sum = 0;
             for(Edge e:edge){
@@ -39,23 +58,43 @@ public class Graphs {
             return sum;
         }
 
-        public ArrayList<Vertex<String>> getVertex() {
+    /**
+     * Metodo que permite obtener un vertice del array de vertices
+     * @return vertice
+     */
+    public ArrayList<Vertex<String>> getVertex() {
             return vertex;
         }
 
-        public void addVertex(Vertex<String> vertex) {
+    /**
+     * Metodo que permite Agregar vertices al grafico pintado
+     * @param vertex
+     */
+    public void addVertex(Vertex<String> vertex) {
             this.vertex.add(vertex);
         }
 
-        public void addEdge(Edge edge) {
+    /**
+     * Metodo que permite agregar una arista para conectar dos vertices
+     * @param edge
+     */
+    public void addEdge(Edge edge) {
             this.edge.add(edge);
         }
 
-        public ArrayList<Edge> getEdges(){
+    /**
+     * Metodo que permite obtener una arista del array de aristas
+     * @return arista
+     */
+    public ArrayList<Edge> getEdges(){
             return edge;
         }
 
-        public String toString(){
+    /**
+     * Metodo To string que muestra los datos de los vertices y las aristas
+     * @return info del vertice con el peso de la arista de forma textual
+     */
+    public String toString(){
             String ver="";
             for(Vertex<String> v:vertex){
                 ver+=v.toString()+",";

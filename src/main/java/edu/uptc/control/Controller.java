@@ -4,13 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import edu.uptc.model.*;
 import edu.uptc.view.*;
-
-
+/**
+ * Clase de Controlador que implementa el escuchador, para saber el boton, la accion y el proceso que hará.
+ *
+ */
 public class Controller implements ActionListener{
-
     private Actions actions;
     private Management management;
 
+    /**
+     * Constructor de la clase que permite inicializar atributos de esta clase.
+     * @param actions
+     */
     public Controller(Actions actions) {
         this.actions = actions;
         management = new Management();
@@ -20,6 +25,11 @@ public class Controller implements ActionListener{
         actions.show(Actions.DESTINY, management.getVertex());
     }
 
+    /**
+     * Metodo que permite escuchar o recibir si cierto boton o campo ha sido llenado y
+     * darle un funcionamiento respectivo a esto
+     * @param e - evento accionado (botones, textfiels)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){

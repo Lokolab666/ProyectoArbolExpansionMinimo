@@ -136,12 +136,20 @@ public class Management{
         } catch (Exception e) {}
     }
 
+    /**
+     * Metodo que permite crear un vertice a partir de lo que introduzca el usuario
+     * @param data - datos de los vertices
+     */
     public void createVertex(String data) {
         vertexList.add(new Vertex<String>(data));
         graph.addVertex(vertexList.get(vertexList.size()-1));
 
     }
 
+    /**
+     * Metodo que permite obtener un vertice y capturar esa información y devolverla
+     * @return data - información del vertice.
+     */
     public String[] getVertex() {
         String[] data = new String[vertexList.size()];
         for (int i = 0; i < data.length; i++) {
@@ -150,27 +158,45 @@ public class Management{
         return data;
     }
 
+    /**
+     * Metodo que permite reiniciar los dos grafos, el principal (todos vertices y aristas)
+     * y el arbol de expansión minima.
+     */
     public void resetMST() {
         index=0;
         listMST = prim.getGraphMST(new Graphs(vertexList, edgeList), vertexList.toArray(new Vertex[vertexList.size()]), edgeList.toArray(new Edge[edgeList.size()]));
     }
 
+    /**
+     * Metodo que permite obtener el grafo que tiene los vertices y las aristas
+     * @return graph - grafo pintado
+     */
     public Graph<Vertex<String>, Edge> getGraph() {
         return graph;
     }
 
+    /**
+     * Metodo que permite que con un boton, pueda el grafo continuar a la siguiente iteración
+     */
     public void nextIndex() {
         if(index<listMST.size()-1) {
             index++;
         }
     }
 
+    /**
+     * Metodo que permite que con un boton, pueda el grafo ir un paso atras de la iteración.
+     */
     public void previousIndex() {
         if(index>0) {
             index--;
         }
     }
 
+    /**
+     * MEtodo que permite obtener el arbol de expansion minima con el conjunto de vertices y aristas.
+     * @return gMST - Grafo pintado.
+     */
     public Graph<Vertex<String>, Edge> getGraphMST() {
         Graph<Vertex<String>, Edge> gMST = new DelegateForest<>();
         if (listMST.size()>0) {

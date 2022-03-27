@@ -20,15 +20,21 @@ import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position;
 
+/**
+ * Clase que permite graficar en un panel el arbol de expansion minima
+ */
 public class TreePanel extends JPanel{
-
-
     private Layout<Vertex<String>, Edge> layout;
     private DefaultModalGraphMouse gm;
     private VisualizationViewer<Vertex<String>, Edge> vs;
     private Graph<Vertex<String>, Edge> graph;
     private Color color;
 
+    /**
+     * Constructor de la clase, donde se inicializan algunos atributos del panel y sus metodos correspondientes
+     * @param graph
+     * @param color
+     */
     public TreePanel(Graph<Vertex<String>, Edge> graph, Color color) {
         this.color = color;
         this.graph = graph;
@@ -37,6 +43,9 @@ public class TreePanel extends JPanel{
         assign();
     }
 
+    /**
+     *Metodo en el que se inicializan los atributos para la vista del arbol de expansion minima
+     */
     private void initialice() {
         //Inicializar visualizacion
         layout =  new TreeLayout<Vertex<String>, Edge>((Forest<Vertex<String>, Edge>) graph);
@@ -68,6 +77,9 @@ public class TreePanel extends JPanel{
 
     }
 
+    /**
+     * Asigna la visualización del grafo
+     */
     private void assign() {
         add(vs);
     }

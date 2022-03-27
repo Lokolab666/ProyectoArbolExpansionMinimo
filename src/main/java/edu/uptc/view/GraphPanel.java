@@ -19,14 +19,21 @@ import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import edu.uci.ics.jung.visualization.renderers.Renderer.VertexLabel.Position;
 
+/**
+ * Clase que permite graficar en un panel el grafo completo del ejercicio
+ */
 public class GraphPanel extends JPanel{
-
 
     private Layout<Vertex<String>, Edge> layout;
     private DefaultModalGraphMouse gm;
     private VisualizationViewer<Vertex<String>, Edge> vs;
     private Graph<Vertex<String>, Edge> graph;
 
+    /**
+     * Constructor de la clase que permite inicializar ciertos atributos y metodos de este panel
+     * @param graph
+     * @param color
+     */
     public GraphPanel(Graph<Vertex<String>, Edge> graph, Color color) {
         setBackground(color);
         this.graph = graph;
@@ -34,6 +41,9 @@ public class GraphPanel extends JPanel{
         assign();
     }
 
+    /**
+     * Metodo en el que se inicializan los atributos para la vista del grafo completo
+     */
     private void initialice() {
         //Initialize visualization
         layout = new CircleLayout<Vertex<String>, Edge>(graph);//crea margen circular sobre la cual se posicionaran los vertices
@@ -54,6 +64,9 @@ public class GraphPanel extends JPanel{
 
     }
 
+    /**
+     * Metod que asigna la visualizacion del grafo al panel
+     */
     private void assign() {
         add(vs);
     }

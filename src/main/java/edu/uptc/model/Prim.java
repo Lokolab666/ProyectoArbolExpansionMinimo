@@ -13,7 +13,6 @@ import edu.uci.ics.jung.graph.util.*;
 public class Prim extends JPanel{
 
 	/*
-
        Funciones definidas:
         * contains() - Devuelve si el vértice de entrada existe o no en la matriz de entrada
         * minEdge () - Dada la matriz de borde, devuelve el borde mínimamente ponderado
