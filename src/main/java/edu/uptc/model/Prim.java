@@ -7,6 +7,9 @@ import edu.uptc.graph.*;
 import edu.uci.ics.jung.graph.*;
 import edu.uci.ics.jung.graph.util.*;
 
+/**
+ * Clase que permite ver el panel donde se pinta el arbol de minima expansion
+ */
 public class Prim extends JPanel{
 
 	/*
@@ -18,7 +21,13 @@ public class Prim extends JPanel{
         * addEdge() - Devuelve el gráfico de entrada con borde agregado
         */
 
-
+    /**
+     * Este metodo permite traer todos los verticesy aristas del arbol de expansión minima.
+     * @param graph
+     * @param vertex
+     * @param edge
+     * @return graphArrayList - Siendo un arraylist con todos los vertices y caras
+     */
     public ArrayList<Graph<Vertex<String>, Edge>> getGraphMST(Graphs graph, Vertex[] vertex, Edge[] edge){
 
         ArrayList<Graph<Vertex<String>, Edge>> graphArrayList = new ArrayList<Graph<Vertex<String>,Edge>>();
@@ -54,7 +63,13 @@ public class Prim extends JPanel{
         return graphArrayList;
     }
 
-    //Devuelve todos los bordes en Graph adyacentes a (pero no incluidos en) los vértices del subgrafo
+    /**
+    * Devuelve todos los bordes en Graph adyacentes A
+     * (pero no incluidos en los vértices del subgrafo)
+     * @param graphOne pintado del primer grafo.
+     * @param graphTwo pintado del segundo grafo.
+     * @return Array o conjunto de todos los datos adyacentes del arbol en los bordes.
+     */
     public Edge[] adjacentEdges(Graphs graphOne, Graphs graphTwo){
         ArrayList<Edge> adjacentEdges = new ArrayList<Edge>();
         ArrayList<Edge> superEdges = graphTwo.getEdges();
@@ -68,7 +83,12 @@ public class Prim extends JPanel{
         return adjacentEdges.toArray(new Edge[adjacentEdges.size()]);
     }
 
-    //Devuelve si el vértice de entrada está incluido o no en la matriz de vértices
+    /**
+     * Devuelve si el vértice de entrada está incluido o no en la matriz de vértices
+     * @param vertices conjunto de todos los vertices
+     * @param v dato interno del vertice
+     * @return un boolean que permite decir si esta o no incluido ese vertice la matriz.
+     */
     public boolean contains(ArrayList<Vertex<String>> vertices, Vertex<String> v){
         for(Vertex<String> vertex:vertices){
             if(vertex.getInfo() == v.getInfo()){
@@ -78,7 +98,11 @@ public class Prim extends JPanel{
         return false;
     }
 
-    //Retorna el valor más mínimo del arbol
+    /**
+     * Este es el metodo MinEdge, donde recorre el arboly verifica cada peso de las aristas
+     * @param edges arreglo de las caras o aristas del arbol.
+     * @return el valor más mínimo del arbol
+     */
     public Edge minEdge(Edge[] edges){
         Edge minEdge = edges[0];
         for(Edge e:edges){
@@ -89,7 +113,10 @@ public class Prim extends JPanel{
         return minEdge;
     }
 
-    //Devuelve el borde mínimo en la matriz
+    /**Devuelve el borde mínimo en la matriz
+     * @param g siendo la grafica del arbol.
+     * @return el grafo pintado.
+     */
     public Graph<Vertex<String>, Edge> convertGraph(Graphs g){
         Graph<Vertex<String>,Edge> graph = new SparseMultigraph<Vertex<String>,Edge>();
         for(Vertex<String> v:g.getVertex()){

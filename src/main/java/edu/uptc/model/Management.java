@@ -10,6 +10,9 @@ import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.SparseMultigraph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 
+/**
+ * Clase que permite el manejo de los datos del grafo pintado o a pintar
+ */
 public class Management{
 
     private Graph<Vertex<String>, Edge> graph;
@@ -19,6 +22,9 @@ public class Management{
     private int index;
     private Prim prim;
 
+    /**
+     * Contructor principal de la clase donde permite inicializar ciertos atributos necesarios
+     */
     public Management() {
         index = 0;
         prim = new Prim();
@@ -29,6 +35,9 @@ public class Management{
         resetMST();
     }
 
+    /**
+     * Metodo que permite poner en un reincio el panel, vertices y aristas puestas
+     */
     public void reset() {
         vertexList = new ArrayList<Vertex<String>>();
         edgeList = new ArrayList<Edge>();
@@ -37,6 +46,9 @@ public class Management{
         resetMST();
     }
 
+    /**
+     * Metodo que permite colocar datos pre-inicializados
+     */
     private void genesis() {
 /*
         // Agregar nodos
@@ -113,6 +125,10 @@ public class Management{
         }
     }
 
+    /**
+     * Metodo que permite crear una cara o vertice de acuerdo a un dato ingresado
+     * @param data Vector lleno de los datos para crear el valor de la arista
+     */
     public void createEdge(String[] data) {
         try {
             edgeList.add(new Edge(Integer.parseInt(data[1]), vertexList.get(Integer.parseInt(data[0])), vertexList.get(Integer.parseInt(data[2]))));
