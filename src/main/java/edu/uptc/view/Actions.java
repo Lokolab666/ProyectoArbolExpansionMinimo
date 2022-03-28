@@ -3,7 +3,12 @@ package edu.uptc.view;
 import edu.uptc.graph.*;
 import edu.uci.ics.jung.graph.Graph;
 
+import java.awt.*;
+
 public interface Actions {
+
+    public static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    public static final double HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
     public static final String CLOSE = "close";
     public static final String RESET = "reset";
@@ -21,6 +26,7 @@ public interface Actions {
 
     public String[] capture(String section);
     public void show(String section, String[] data);
+    public void showData(String section, String data);
     public void showGraph(String section, Graph<Vertex<String>,Edge> graph);
     public void clear(String section);
 }

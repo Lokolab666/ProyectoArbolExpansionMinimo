@@ -2,9 +2,6 @@ package edu.uptc.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-
 import javax.swing.JPanel;
 
 import edu.uptc.graph.*;
@@ -26,6 +23,7 @@ public class GraphPanel extends JPanel{
     private DefaultModalGraphMouse gm;
     private VisualizationViewer<Vertex<String>, Edge> vs;
     private Graph<Vertex<String>, Edge> graph;
+    private Dimension dimension;
 
     public GraphPanel(Graph<Vertex<String>, Edge> graph, Color color) {
         setBackground(color);
@@ -36,9 +34,12 @@ public class GraphPanel extends JPanel{
 
     private void initialice() {
         //Initialize visualization
+        dimension = new Dimension();
         layout = new CircleLayout<Vertex<String>, Edge>(graph);//crea margen circular sobre la cual se posicionaran los vertices
+        dimension.setSize(Actions.WIDTH*.366,Actions.HEIGHT*.651);
         layout.setSize(new Dimension(500,600));//tamaño inicial del layout
         vs = new VisualizationViewer<Vertex<String>, Edge>(layout);//componente que detecta la interaccion con el mouse
+        dimension.setSize(Actions.WIDTH*.3587,Actions.HEIGHT*.6640);
         vs.setPreferredSize(new Dimension(490,550));//tamaño del "panel" (el area visual)
 
         //Creates GraphMouse and adds to visualization

@@ -29,6 +29,8 @@ public class TreePanel extends JPanel{
     private Graph<Vertex<String>, Edge> graph;
     private Color color;
 
+    private Dimension dimension;
+
     public TreePanel(Graph<Vertex<String>, Edge> graph, Color color) {
         this.color = color;
         this.graph = graph;
@@ -38,11 +40,13 @@ public class TreePanel extends JPanel{
     }
 
     private void initialice() {
+        dimension = new Dimension();
         //Inicializar visualizacion
         layout =  new TreeLayout<Vertex<String>, Edge>((Forest<Vertex<String>, Edge>) graph);
         //crea margen Por niveles para asi poder asignar los nodos a la altura a la que pertenece
         vs = new VisualizationViewer<Vertex<String>, Edge>(layout);//componente que detecta la interaccion con el mouse
-        vs.setPreferredSize(new Dimension(490,550));//tamaño del "panel" (el area visual)
+        dimension.setSize(Actions.WIDTH*.3587,Actions.HEIGHT*.6640);//490, 410
+        vs.setPreferredSize(dimension);
 
         //Permite el escalado del grafo a medida que este se vea editando
         gm = new DefaultModalGraphMouse();
@@ -51,12 +55,10 @@ public class TreePanel extends JPanel{
 
         //Transformador asigna el número de vértice a una propiedad de vértice
         Transformer<Vertex<String>, Paint> vertexColor = new Transformer<Vertex<String>, Paint>() {
-
             @Override
             public Paint transform(Vertex<String> arg0) {
                 return color;
             }
-
         };
 
         vs.getRenderContext().setVertexFillPaintTransformer(vertexColor);//configura el color de los vertices

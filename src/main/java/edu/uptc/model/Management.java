@@ -162,20 +162,20 @@ public class Management{
     }
 
     public void nextIndex() {
-        if(index<listMST.size()-1) {
+        if(index < listMST.size()-1) {
             index++;
         }
     }
 
     public void previousIndex() {
-        if(index>0) {
+        if(index > 0) {
             index--;
         }
     }
 
     public Graph<Vertex<String>, Edge> getGraphMST() {
         Graph<Vertex<String>, Edge> gMST = new DelegateForest<>();
-        if (listMST.size()>0) {
+        if (listMST.size() > 0) {
             Graph<Vertex<String>, Edge> graph = listMST.get(index);
             Collection<Vertex<String>> vertexCollection = graph.getVertices();
             for (Iterator<Vertex<String>> iterator = vertexCollection.iterator(); iterator.hasNext();) {
@@ -188,6 +188,22 @@ public class Management{
                 gMST.addEdge(edge, edge.getVertex1(), edge.getVertex2());
             }
         }
-        return gMST ;
+        return gMST;
+    }
+
+    public String getGraphData() {
+        String data = "GRAFO:\n";
+        data += "Numero de vertices: "+graph.getVertexCount()+"\n";
+        data += "Numero de aristas: "+graph.getEdgeCount();
+        return data;
+    }
+
+    public String getMSTData() {
+        String data = "ARBOL DE EXPANCION MINIMA:\n";
+        Graph<Vertex<String>, Edge> gMST = getGraphMST();
+        data += "Iteracion: "+(index+1)+"\n";
+        data += "Numero de vertices: "+gMST.getVertexCount()+"\n";
+        data += "Numero de aristas: "+gMST.getEdgeCount();
+        return data;
     }
 }

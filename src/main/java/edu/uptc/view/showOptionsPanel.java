@@ -1,6 +1,6 @@
 package edu.uptc.view;
 
-import java.awt.Color;
+import java.awt.*;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -13,6 +13,8 @@ public class showOptionsPanel extends JDialog implements Actions{
 
     private OptionsPanel opOptions;
 
+    private Dimension dimension;
+
     /**
      * Instantiates a new menu window.
      *
@@ -20,7 +22,9 @@ public class showOptionsPanel extends JDialog implements Actions{
      */
     public showOptionsPanel(JFrame frame) {
         setLayout(null);
-        setSize(300, 561);
+        dimension = new Dimension();
+        dimension.setSize(Actions.WIDTH*.2196, Actions.HEIGHT*.8606);
+        setSize(dimension);//300, 661
         setResizable(false);
         setUndecorated(true);
         initialize();
@@ -29,7 +33,9 @@ public class showOptionsPanel extends JDialog implements Actions{
 
     private void initialize() {
         opOptions = new OptionsPanel();
-        opOptions.setBounds(0, 0, 300, 561);
+        dimension.setSize(Actions.WIDTH*.2196, Actions.HEIGHT*.8606);
+        opOptions.setSize(dimension);//300, 661
+        opOptions.setLocation(0,0);//0, 0
         opOptions.setBackground(Color.orange);
     }
 
@@ -47,12 +53,10 @@ public class showOptionsPanel extends JDialog implements Actions{
             case Actions.VERTEX:
                 String[] dataVertex = {opOptions.getVertexName()};
                 return dataVertex;
-//			break;
 
             case Actions.EDGE:
                 String[] dataEdge = {""+opOptions.getOriginVertexIndex(), opOptions.getWeight(), ""+opOptions.getDestinyVertexIndex()};
                 return dataEdge;
-//			break;
         }
         return null;
     }
@@ -70,6 +74,9 @@ public class showOptionsPanel extends JDialog implements Actions{
         }
         repaint();
     }
+
+    @Override
+    public void showData(String section, String data) {}
 
     @Override
     public void showGraph(String section, Graph<Vertex<String>, Edge> graph) {}
